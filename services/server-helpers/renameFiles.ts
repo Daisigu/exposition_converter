@@ -1,10 +1,14 @@
-import path from "path";
-import Jimp from "jimp";
+
 import fs from "fs";
 
-const renameFiles =(files: FileList) => {
-    files.forEach(async (file: any, index: number) => {
-        let newPath = `${path.join("public", "uploads", (index + 1).toString())}.jpg`;
-        fs.writeSync(newPath, file.filepath)
-    })
+const renameFiles =(dir: string) => {
+    fs.readdir(dir, (err, files,) => {
+        if(err) throw err; // не прочитать содержимое папки
+        files.forEach((file, index) => {
+            fs.rename(`public/uploads/${file}`, `public/uploads/${index + 1}.jpg`, err => {
+                if(err) throw err;
+            })
+        })
+    });
 }
+export {renameFiles}

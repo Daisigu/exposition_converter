@@ -2,14 +2,18 @@
 const pptxFile = ref(null)
 const handleFileChange = async (event: HTMLInputElement) => {
     pptxFile.value = (event as HTMLInputElement).currentTarget.files[0];
-}
-const convertFile = () => {
     const formData = new FormData()
     formData.append('pptxFile', pptxFile.value)
     useFetch('/api/convert', {
         method: 'POST',
         body: formData
     })
+}
+const convertFile = () => {
+  useFetch('/api/archivateFiles', {
+      method: 'POST',
+      body: {dir: 'pdfToImages'}
+  })
 }
 </script>
 <template>

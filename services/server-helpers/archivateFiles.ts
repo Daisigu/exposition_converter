@@ -1,3 +1,4 @@
+// @ts-ignore
 import archiver from "archiver";
 import path from "path";
 import fs from "fs";
