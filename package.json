@@ -1,0 +1,25 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxtjs/tailwindcss": "^6.8.0",
+    "nuxt": "^3.7.3"
+  },
+  "dependencies": {
+    "archiver": "^6.0.1",
+    "formidable": "^3.5.1",
+    "fs-extra": "^11.1.1",
+    "h3-formidable": "^0.3.8",
+    "jimp": "^0.22.10",
+    "sharp": "^0.32.6"
+  }
+}
