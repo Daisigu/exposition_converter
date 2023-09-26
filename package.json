@@ -20,7 +20,10 @@
     "fs-extra": "^11.1.1",
     "h3-formidable": "^0.3.8",
     "jimp": "^0.22.10",
+    "officegen": "^0.6.5",
+    "pdf-poppler": "^0.2.1",
     "serve-static": "^1.15.0",
-    "sharp": "^0.32.6"
+    "sharp": "^0.32.6",
+    "unoconv": "^0.1.2"
   }
 }

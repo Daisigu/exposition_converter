@@ -18,11 +18,11 @@ const handleFileChange = async (event: HTMLInputElement) => {
     })
 }
 const convertFiles = () => {
-    useFetch('/api/archivateFiles')
-}
-const downloadArchive = () => {
-    const {data} = useFetch('/api/downloadRenameArchive', {
-        method: 'GET',
+    useFetch('/api/archivateFiles', {
+        method: 'POST',
+        body: {
+            dir: 'renamedAndCompressed'
+        }
     })
 }
 </script>

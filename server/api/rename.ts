@@ -1,25 +1,12 @@
 import {readFiles} from 'h3-formidable';
-import fs from "fs";
 import path from "path";
 import Jimp from "jimp";
-import archiver from "archiver";
+import {clearDirectory} from "~/services/server-helpers/clearDir";
 
 export default defineEventHandler(async (event) => {
     const {photo: files} = await readFiles(event)
-    const clearDirectory = (dir: string) => {
-        const files = fs.readdirSync(dir);
-        for (const file of files) {
-            fs.unlinkSync(path.join(dir, file));
-        }
-        new Promise((resolve, reject) => {
-            resolve(true)
-        })
-    }
-
-
-    const convertFilesToJpg = (files: FileList, qualityPercent=60) => {
-
-        files.forEach(async (file, index) => {
+    const convertFilesToJpg = (files: FileList[], qualityPercent = 60) => {
+        files.forEach(async (file: any, index: number) => {
             let newPath = `${path.join("public", "uploads", (index + 1).toString())}.jpg`;
             let image = await Jimp.read(file.filepath)
             image.quality(qualityPercent)
@@ -32,7 +19,5 @@ export default defineEventHandler(async (event) => {
     await clearDirectory(path.join("public", "uploads"));
     await convertFilesToJpg(files)
 
-    return {
-        status: 200,
-    }
+    return {success: true, message: 'Файлы успешно конвертированы в jpg и переименованы'}
 });
