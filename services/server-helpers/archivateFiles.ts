@@ -16,7 +16,7 @@ const archivateUploads = (dir: string): Promise<void> => {
         archive.on('end', () => {
             resolve(true);
         });
-        archive.on('error', (err) => {
+        archive.on('error', (err: Error) => {
             reject(err);
         });
     });
